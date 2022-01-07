@@ -18,7 +18,7 @@
 
 ---
 
-## Table of Contents (updating)
+## Table of Contents (add Drone Device 12/07/2021)
 
 - Basic Computer Skills for Digital Forensics
   - [Number Systems](/Basic_Computer_Skills_for_Forensics/0_Number_Systems.pptx)
@@ -35,58 +35,46 @@
   - [Steganography](/Basic_Computer_Skills_for_Forensics/10_Steganography.pptx)
   - [Forensic Report Template](/Basic_Computer_Skills_for_Forensics/Forensic_Report_Template.pdf)
 - Computer Forensics Case Study
-  - [Investigating P2P Data Leakage](#Investigating-P2P-Data-Leakage) (added on June 2021)
-  - [Investigating NIST Data Leakage](#Investigating-NIST-Data-Leakage)
-  - [Investigating Illegal Possession of Images](#Investigating-Illegal-Possession-of-Images "Networking forensics")
+  - [Investigating NIST Data Leakage (Windows XP)](#Investigating-NIST-Data-Leakage)
+  - [Investigating P2P Data Leakage (Windows 10)](#Investigating-P2P-Data-Leakage)
+  - [Investigating Illegal Possession of Images ("Networking forensics")](#Investigating-Illegal-Possession-of-Images)
   - [Investigating Email Harassment](#Investigating-Email-Harassment)
-  - [Investigating Illegal File Transferring (Memory Forensics)](#Investigating-illegal-File-Transferring "Memory Forensics")
+  - [Investigating Illegal File Transferring (Memory Forensics)](#Investigating-illegal-File-Transferring)
   - [Investigating Hacking Case](#Investigating-Hacking-Case)
-- Mobile Forensics Case Study
-  - [Investigating Android 10](#Investigating-Android-10) (added on Oct/24/2021)
+- Mobile/IoT Forensics Case Study
+  - [Investigating Android 10](#Investigating-Android-10) (added on 10/24/2021)
   - iOS 13 (to be released...)
+  - [Investigating Drone](#Investigating-Drone-DJI) (add on 12/07/2021)
 - Forensic Intelligence Repository
   - [Email forensics](/STIX_for_digital_forensics/Email_Harassment)
   - [Illegal Possession of Images](/STIX_for_digital_forensics/Illegal_Possession_Images)
-- Tool Installation
-  - [Tools Used](#Tools-Used)
-  - [Installation PPTs](https://raw.githubusercontent.com/frankwxu/digital-forensics-lab/main/Help/Kali_Installation_2020.pptx)
-  - Installation Scripts (see commands as follows)
+
+## Tool Installation (newly added on 12/6/2021)
+
+### Method 1: Importing customized Kali VM image
+
+The customized Kali VM = Kali (2020.4) + [tools](#Tools) used for completing most of the labs listed above (except p2p Data Leakage case)
+
+- Install [Virtualbox](https://www.virtualbox.org/)
+- Import the customized [Kali 2020.4](https://www.dropbox.com/s/y7svxg2pyy94ab5/Kali-Linux-2020.4-vbox-amd64_tools.ova). Notes: the default harddisk size is 80G.
+
+### Method 2: Installing tools using the customized script (the script ONLY is tested on Kali 2020.4)
+
+The following script will install tools needed for completing most of the labs listed above (except p2p Data Leakage case, which has its own script described in PPTs). Please let us know if you need us to add more tools to the script.
+
+- Install [Virtualbox](https://www.virtualbox.org/)
+
+- Install [Kali 2020.4](https://www.kali.org/blog/kali-linux-2020-4-release/). Notes: Suggest You configure the disk size of Kali VM 80G because the size of each leakage cases image is 30G+
+
+- How to run the installation script [instructions](https://raw.githubusercontent.com/frankwxu/digital-forensics-lab/main/Help/Tool_installation.pptx), or you can simply follow the commands below
 
 ```
-# The following commands will install all tools needed for Data Leakage Case. We will upgrade the script to add more tools for other labs soon.
-
 wget  https://raw.githubusercontent.com/frankwxu/digital-forensics-lab/main/Help/tool-install-zsh.sh
 chmod +x tool-install-zsh.sh
 ./tool-install-zsh.sh
 ```
 
----
-
-### Investigating P2P Data Leakage
-
-==============
-
-The [P2P data leakage case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIST_Data_Leakage_Case) is to help students to apply various forensic techniques to investigate intellectual property theft involving P2P. The study include
-
-- A large and complex case involving a uTorrent client. The case is similar to NIST data leakage lab. However, it provides a clearer and more detailed timeline.
-- Solid evidence with explanations. Each evidence that is associated with each activity is explained along with the timeline. We suggest using this before study NIST data leakage case study.
-- 10 hands-on labs/topics in digital forensics
-
-**Topics Covered**
-
-| Labs   | Topics Covered                                                                                        | Size of PPTs |
-| ------ | ----------------------------------------------------------------------------------------------------- | ------------ |
-| Lab 0  | [Lab Environment Setting Up](P2P_Leakage/Presentation/ID00_Lab_Setup.pptx)                            | 4M           |
-| Lab 1  | [Disk Image and Partitions](P2P_Leakage/Presentation/ID01_Disk_Image_and_Partitions.pptx)             | 5M           |
-| Lab 2  | [Windows Registry and File Directory](P2P_Leakage/Presentation/ID02_Registry_and_File_Directory.pptx) | 15M          |
-| Lab 3  | [MFT Timeline ](P2P_Leakage/Presentation/ID03_MFT_Timeline.pptx)                                      | 6M           |
-| Lab 4  | [USN Journal Timeline](P2P_Leakage/Presentation/ID03_MFT_Timeline.pptx)                               | 3M           |
-| Lab 5  | [uTorrent Log File ](P2P_Leakage/Presentation/ID05_uTorrent_Log_File.pptx)                            | 9M           |
-| Lab 6  | [File Signature ](P2P_Leakage/Presentation/ID06_File_Signature.pptx)                                  | 8M           |
-| Lab 7  | [Emails ](P2P_Leakage/Presentation/ID07_Emails.pptx)                                                  | 9M           |
-| Lab 8  | [Web History ](P2P_Leakage/Presentation/ID08_Web_History.pptx)                                        | 11M          |
-| Lab 9  | [Website Analysis ](P2P_Leakage/Presentation/ID09_Website_Analysis.pptx)                              | 2M           |
-| Lab 10 | [Timeline (Summary)](P2P_Leakage/Presentation/Questions.docx)                                         | 13K          |
+- Installed [tools](#Tools). Note that most of the commands for tools can executed globally. Now you can skip most of tool installation steps in PPTs.
 
 ---
 
@@ -96,7 +84,7 @@ The [P2P data leakage case study](https://github.com/frankwxu/digital-forensics-
 
 The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIST_Data_Leakage_Case) is to investigate an image involving intellectual property theft. The study include
 
-- A large and complex case study created by NIST. You can access the [Senario, DD/Encase images](https://www.cfreds.nist.gov/data_leakage_case/data-leakage-case.html). You can also find the [solutions](https://www.cfreds.nist.gov/data_leakage_case/leakage-answers.pdf) on their website.
+- A large and complex case study created by NIST. You can access the [Scenario, DD/Encase images](https://cfreds-archive.nist.gov/data_leakage_case/data-leakage-case.html). You can also find the [solutions](https://cfreds-archive.nist.gov/data_leakage_case/leakage-answers.pdf) on their website.
 - 14 hands-on labs/topics in digital forensics
 
 **Topics Covered**
@@ -120,11 +108,39 @@ The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIS
 
 ---
 
+### Investigating P2P Data Leakage
+
+==============
+
+The [P2P data leakage case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIST_Data_Leakage_Case) is to help students to apply various forensic techniques to investigate intellectual property theft involving P2P. The study includes
+
+- A large and complex case involving a uTorrent client. The case is similar to NIST data leakage lab. However, it provides a clearer and more detailed timeline.
+- Solid evidence with explanations. Each evidence that is associated with each activity is explained along with the timeline.
+- 10 hands-on labs/topics in digital forensics
+
+**Topics Covered**
+
+| Labs   | Topics Covered                                                                                        | Size of PPTs |
+| ------ | ----------------------------------------------------------------------------------------------------- | ------------ |
+| Lab 0  | [Lab Environment Setting Up](P2P_Leakage/Presentation/ID00_Lab_Setup.pptx)                            | 4M           |
+| Lab 1  | [Disk Image and Partitions](P2P_Leakage/Presentation/ID01_Disk_Image_and_Partitions.pptx)             | 5M           |
+| Lab 2  | [Windows Registry and File Directory](P2P_Leakage/Presentation/ID02_Registry_and_File_Directory.pptx) | 15M          |
+| Lab 3  | [MFT Timeline ](P2P_Leakage/Presentation/ID03_MFT_Timeline.pptx)                                      | 6M           |
+| Lab 4  | [USN Journal Timeline](P2P_Leakage/Presentation/ID03_MFT_Timeline.pptx)                               | 3M           |
+| Lab 5  | [uTorrent Log File ](P2P_Leakage/Presentation/ID05_uTorrent_Log_File.pptx)                            | 9M           |
+| Lab 6  | [File Signature ](P2P_Leakage/Presentation/ID06_File_Signature.pptx)                                  | 8M           |
+| Lab 7  | [Emails ](P2P_Leakage/Presentation/ID07_Emails.pptx)                                                  | 9M           |
+| Lab 8  | [Web History ](P2P_Leakage/Presentation/ID08_Web_History.pptx)                                        | 11M          |
+| Lab 9  | [Website Analysis ](P2P_Leakage/Presentation/ID09_Website_Analysis.pptx)                              | 2M           |
+| Lab 10 | [Timeline (Summary)](P2P_Leakage/Presentation/Questions.docx)                                         | 13K          |
+
+---
+
 ### Investigating Illegal Possession of Images
 
 =====================
 
-The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/Illegal_Possession_Images) is to investigate the illegal possession of Rhino images. This image was contributed by Dr. Golden G. Richard III, and was originally used in the DFRWS 2005 RODEO CHALLENGE. NIST hosts the [USB DD image](https://www.cfreds.nist.gov/dfrws/Rhino_Hunt.html). A copy of the image is also available in the repository.
+The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/Illegal_Possession_Images) is to investigate the illegal possession of Rhino images. This image was contributed by Dr. Golden G. Richard III, and was originally used in the DFRWS 2005 RODEO CHALLENGE. NIST hosts the [USB DD image](https://cfreds-archive.nist.gov/dfrws/Rhino_Hunt.html). A copy of the image is also available in the repository.
 
 **Topics Covered**
 
@@ -151,7 +167,7 @@ The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/Ema
 | Lab 1 | [t-shark Forensic Introduction](Email_Harassment/1_tshark_forensics_Introduction.pptx)                           | 2M           |
 | Lab 2 | [Investigating Harassment Email using t-shark](2_Investigate_Harassment_Email_TShark.pptx)                       | 2M           |
 
-### Investigating Illegal File Transferring (Memory Forensics )
+### Investigating Illegal File Transferring
 
 =========
 
@@ -175,7 +191,7 @@ The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/Ill
 
 =========
 
-The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIST_Hacking_Case), including a disk image provided by [NIST](https://www.cfreds.nist.gov/Hacking_Case.html) is to investigate a hacker who intercepts internet traffic within range of Wireless Access Points.
+The [case study](https://github.com/frankwxu/digital-forensics-lab/tree/main/NIST_Hacking_Case), including a disk image provided by [NIST](https://cfreds-archive.nist.gov/Hacking_Case.html) is to investigate a hacker who intercepts internet traffic within range of Wireless Access Points.
 
 **Topics Covered**
 
@@ -208,32 +224,52 @@ The image is created by Joshua Hickman and hosted by [digitalcorpora](https://di
 | Lab 5.3.3 | [Third-Party App Investigations: whatapp](Andriod10/5_3_3_Third_Party_App_Investigation_whatsapp.pptx) | 3M           |
 | Lab 6     | [Pixel 3 Rooting](Andriod10/6_Pixel3_rooting.pptx)                                                     | 5M           |
 
-### Tools Used
+### Investigating Drone DJI
 
-========
+The dataset includes logical files extracted from a DJI controller (mobile device) and a SD card image used by the device. The Drone dataset is created by [VTO Labs](https://www.vtolabs.com/drone-forensics). The lab covers GPS investigation and cached image retrieval. Note that it is a draft. We will improve the lab later.
 
-| Name                    | version    | vendor                                                          |
-| ----------------------- | ---------- | --------------------------------------------------------------- |
-| Wine                    | 6.0        | https://source.winehq.org/git/wine.git/                         |
-| Vinetto                 | 0.98       | https://github.com/AtesComp/Vinetto                             |
-| imgclip                 | 05.12.2017 | https://github.com/Arthelon/imgclip                             |
-| Tree                    | 06.01.2020 | https://github.com/kddeisz/tree                                 |
-| RegRipper               | 3.0        | https://github.com/keydet89/RegRipper3.0                        |
-| Windows-Prefetch-Parser | 05.01.2016 | https://github.com/PoorBillionaire/Windows-Prefetch-Parser.git  |
-| python-evtx             | 05.21.2020 | https://github.com/williballenthin/python-evtx                  |
-| xmlstarlet              | 1.6.1      | https://github.com/fishjam/xmlstarlet                           |
-| hivex                   | 09.15.2020 | https://github.com/libguestfs/hivex                             |
-| libesedb                | 01.01.2021 | https://github.com/libyal/libesedb                              |
-| pasco-project           | 02.09.2017 | https://annsli.github.io/pasco-project/                         |
-| libpff                  | 01.17.2021 | https://github.com/libyal/libpff                                |
-| USN-Record-Carver       | 05.21.2017 | https://github.com/PoorBillionaire/USN-Record-Carver            |
-| USN-Journal-Parser      | 1212.2018  | https://github.com/PoorBillionaire/USN-Journal-Parser           |
-| JLECmd                  | 1.4.0.0    | https://f001.backblazeb2.com/file/EricZimmermanTools/JLECmd.zip |
-| libnl-utils             | 3.2.27     | https://packages.ubuntu.com/xenial/libs/libnl-utils             |
-| time_decode             | 12.13.2020 | https://github.com/digitalsleuth/time_decode                    |
-| analyzeMFT              | 2.0.4      | https://github.com/dkovar/analyzeMFT                            |
-| libvshadow              | 12.20.2020 | https://github.com/libyal/libvshadow                            |
-| recentfilecache-parser  | 02.13.2018 | https://github.com/prolsen/recentfilecache-parser               |
+=========
+
+| Labs  | Topics Covered                                                                                  | Size of PPTs |
+| ----- | ----------------------------------------------------------------------------------------------- | ------------ |
+| Lab 0 | [DJI Mavic Air Mobile](Drone_DJI_Mavic_Air/00_DJI_Mavic_Air_Mobile.pptx)                        | 13M          |
+| Lab 1 | [DJI Mavic Air MicroSD Raw](Drone_DJI_Mavic_Air/01_DJI_Mavic_Air_microSD_raw.pptx)              | 2M           |
+| Lab 2 | [DJI Mavic Air MicroSD Encase Format](Drone_DJI_Mavic_Air/02_DJI_Mavic_Air_microSD_encase.pptx) | 2M           |
+
+### Tools
+
+- Commands tested
+
+| Name                    | Command           | Repository                                                      | Installation Method |
+| ----------------------- | ----------------- | --------------------------------------------------------------- | ------------------- |
+| Wine                    | wine --version    | https://source.winehq.org/git/wine.git/                         | Custom              |
+| Vinetto                 | vinetto -h        | https://github.com/AtesComp/Vinetto                             | Custom              |
+| imgclip                 | imgclip -h        | https://github.com/Arthelon/imgclip                             | apt install         |
+| RegRipper               | rip.pl -h         | https://github.com/keydet89/RegRipper3.0                        | Customized scirpt   |
+| Windows-Prefetch-Parser | prefetch.py -h    | https://github.com/PoorBillionaire/Windows-Prefetch-Parser.git  | Custom              |
+| python-evtx             | evtx_dump.py -h   | https://github.com/williballenthin/python-evtx                  | apt install         |
+| libesedb-utils          | esedbexport -h    | https://github.com/libyal/libesedb                              | apt install         |
+| libpff                  | pffexport -h      | https://github.com/libyal/libpff                                | apt install         |
+| USN-Record-Carver       | usncarve.py -h    | https://github.com/PoorBillionaire/USN-Record-Carver            | apt install         |
+| USN-Journal-Parser      | usn.py -h         | https://github.com/PoorBillionaire/USN-Journal-Parser           | apt install         |
+| time_decode             | time_decode.py -h | https://github.com/digitalsleuth/time_decode                    | Git clone           |
+| analyzeMFT              | analyzeMFT.py -h  | https://github.com/dkovar/analyzeMFT                            | Customized scirpt   |
+| libvshadow              | vshadowinfo -h    | https://github.com/libyal/libvshadow                            | Customized scirpt   |
+| INDXParse               | INDXParse.py -    |                                                                 | Customized scirpt   |
+| carving sqlite .db      | undark -h         | https://github.com/inflex/undark.git                            | Customized scirpt   |
+| stegdetect              | stegdetect -V     |                                                                 | Customized scirpt   |
+| stegbreak               | stegbreak -V      |                                                                 | Customized scirpt   |
+| stego-toolkit           | jphide            |                                                                 | Customized scirpt   |
+| jpsestego-toolkitek     | jpseek            |                                                                 | Customized scirpt   |
+| volatility-2            | vol.py -h         | https://github.com/volatilityfoundation/volatility.git          | Customized scirpt   |
+| liblnk-utils            | lnkinfo -h        |                                                                 | apt install         |
+| JLECmd                  |                   | https://f001.backblazeb2.com/file/EricZimmermanTools/JLECmd.zip | Git clone           |
+| recentfilecache-parser  |                   | https://github.com/prolsen/recentfilecache-parser               |                     |
+| LogFileParser           |                   | https://github.com/jschicht/LogFileParser.git                   | Git clone           |
+| UsnJrnl2Csv             |                   | ttps://github.com/jschicht/UsnJrnl2Csv.git                      | Git clone           |
+
+- Other tools installed via apt install
+  python3-pip, leafpad, terminator, sqlite3, tree, xmlstarlet, libhivex-bin, pasco, libhivex-bin, npm, binwalk, foremost, hashdeep, ewf-tools, nautilus
 
 ## Contribution
 
